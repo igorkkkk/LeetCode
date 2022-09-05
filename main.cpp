@@ -1,33 +1,48 @@
 #include <iostream>
-#include <unordered_map>
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+    };
 class Solution {
 public:
-    std::unordered_map<char,int> uMap = {
-            {'I',1},
-            {'V',5},
-            {'X',10},
-            {'L',50},
-            {'C',100},
-            {'D',500},
-            {'M',1000},
-    };
-    int romanToInt(std::string s) {
-        int num = uMap.at(s.back());
-        for( int i = s.length()-1; i >0 ; i--){
-
-            if((i-1)>=0&& (uMap.at(s.at(i))>uMap.at(s.at(i-1)))){
-                num -=uMap.at(s.at(i-1));
-            }
-            else{
-                num += uMap.at(s.at(i-1));
-            }
-        }
-        return num;
+    bool isPalindrome(ListNode* head) {
+        return isPalindromeRecurse(head,head);
     }
+    bool isPalindromeRecurse(ListNode*& head, ListNode* comp){
+        if(!comp){
+            return true;
+        }
+        bool pal = isPalindromeRecurse(head, comp->next);
+
+        if(head->val != comp->val){
+            return false;
+        }
+        else {
+        head = head->next;
+        return pal;
+    }
+
 };
 
 int main(int argc, const char * argv[]) {
     Solution t;
-    std::cout <<t.romanToInt(std::string("IV"));
+
+    ListNode one =  ListNode(1);
+    ListNode two = ListNode(2);
+    ListNode three = ListNode(3);
+    ListNode four = ListNode(2);
+    ListNode five = ListNode(1);
+
+
+    five.next = NULL;
+    one.next = &two;
+    two.next = &three;
+    three.next = &four;
+    four.next = &five;
+    ListNode* temp = &one;
+    std::cout <<t.isPalindrome(temp);
     return 0;
 }
