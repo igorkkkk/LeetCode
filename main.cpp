@@ -11,14 +11,12 @@ struct TreeNode {
 
 class Solution {
 public:
-    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if((root->val>p->val)&& (root->val> q->val)){
-            return lowestCommonAncestor(root->right,p,q);
-        }
-        if(root->val<p->val&& root->val< q->val){
-            return lowestCommonAncestor(root->left,p,q);
-        }
-        return root;
+    TreeNode* lowestCommonAncestor(TreeNode*& rt, TreeNode* p, TreeNode* q) {
+
+        if((rt->val-p->val)*(rt->val-q->val)<=0) return rt;
+        else if( rt->val<p->val&& rt->val< q->val) rt = rt->right;
+        else rt = rt->left;
+        return lowestCommonAncestor(rt,p,q);
     }
 };
 
@@ -42,7 +40,8 @@ int main(int argc, const char * argv[]) {
     root_one.right = &root_seven;
     root_seven.left = &root_eight;
     root_seven.right = &root_nine;
-    TreeNode* ptr_root=  &root_one;
-    std::cout <<t.lowestCommonAncestor(ptr_root,&root_two,&root_four)->val;
+
+    TreeNode* ptr = &root_one;
+    std::cout <<t.lowestCommonAncestor(ptr,&root_two,&root_four)->val;
     return 0;
 }
