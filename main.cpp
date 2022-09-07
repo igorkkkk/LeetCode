@@ -1,26 +1,44 @@
 #include <iostream>
 #include <unordered_set>
+#include <vector>
+#include <string>
+#include <iterator>
+#include <iomanip>
+#include <chrono>
 
 
 
 class Solution {
 public:
-    bool canConstruct(std::string ransomNote, std::string magazine) {
-        std::size_t tmp = magazine.find(ransomNote[0]);
-        if (tmp != std::string::npos) {
-            return canConstruct(ransomNote.erase(0,1), magazine.erase(tmp,1));
+    std::vector<std::string> fizzBuzz(int n) {
+        std::vector<std::string> mass;
+        for(int i = 1;  i <=n; i++){
+
+            if(i%3 == 0){
+                mass.push_back("Fizz");
+                if(i%5 == 0){
+                    mass.back()+="Buzz";
+                }
+            }
+            else if(i%5 == 0){
+                mass.push_back("Buzz");
+            }
+            else{
+                mass.push_back(std::to_string(i));
+            }
+
         }
-        else {
-            return !ransomNote.length();
-        }
+        return std::move(mass);
     }
 };
 
 int main(int argc, const char * argv[]) {
     Solution t;
-
-    std::string ransomNote = "aa";
-    std::string magazine = "aab";
-    std::cout <<t.canConstruct(ransomNote,magazine);
+    auto start = std::chrono::high_resolution_clock::now();
+    std::vector<std::string> v = t.fizzBuzz(15);
+    auto stop = std::chrono::high_resolution_clock::now();
+    auto duration = duration_cast<std::chrono::microseconds>(stop - start);
+    std::copy(v.begin(), v.end(), std::ostream_iterator<std::string>(std::cout, " "));
+    std::cout<<"\n"<<duration.count();
     return 0;
 }
