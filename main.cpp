@@ -17,13 +17,15 @@ struct ListNode {
 };
 class Solution {
 public:
-    ListNode* middleNode(ListNode* head) {
-        return middleNoteRecurse(head,head);
+    ListNode* deleteMiddle(ListNode* head) {
+        middleNoteRecurse(head,head);
+        return head;
     }
-    ListNode* middleNoteRecurse(ListNode*& middle,ListNode*& last){
+    ListNode*& middleNoteRecurse(ListNode*& middle,ListNode*& last){
         if(last&&last->next){
             return middleNoteRecurse(middle->next,last->next->next);
         }
+        middle = middle->next;
         return middle;
     }
 };
@@ -32,17 +34,17 @@ int main(int argc, const char * argv[]) {
     Solution t;
     ListNode one =  ListNode(1);
     ListNode two = ListNode(2);
-    ListNode three = ListNode(3);
-    ListNode four = ListNode(2);
-    ListNode five = ListNode(1);
+//    ListNode three = ListNode(3);
+//    ListNode four = ListNode(2);
+//    ListNode five = ListNode(1);
 
 
-    five.next = NULL;
-    one.next = &two;
-    two.next = &three;
-    three.next = &four;
-    four.next = &five;
+//    two.next = NULL;
+//    one.next = &two;
+//    two.next = &three;
+//    three.next = &four;
+//    four.next = &five;
     ListNode* temp = &one;
-    std::cout<<"\n"<<t.middleNode(temp)->val;
+    std::cout<<"\n"<<t.deleteMiddle(temp);
     return 0;
 }
