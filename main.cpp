@@ -1,50 +1,35 @@
 #include <iostream>
-#include <unordered_set>
+#include <map>
 #include <vector>
-#include <string>
 #include <iterator>
-#include <iomanip>
-#include <chrono>
+#include <numeric>
 
 
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
 class Solution {
 public:
-    ListNode* deleteMiddle(ListNode* head) {
-        middleNoteRecurse(head,head);
-        return head;
-    }
-    ListNode*& middleNoteRecurse(ListNode*& middle,ListNode*& last){
-        if(last&&last->next){
-            return middleNoteRecurse(middle->next,last->next->next);
+    std::vector<int> kWeakestRows(std::vector<std::vector<int>>& mat, int k) {
+        std::multimap<int,int> bin_map;
+        std::vector<int> return_vec(0);
+        for(int i = 0; i < mat.size(); i++){
+            bin_map.insert(std::pair(std::accumulate(mat[i].begin(),mat[i].end(),0),i));
         }
-        middle = middle->next;
-        return middle;
+        auto itb = bin_map.begin();
+        for(int i = 0; i < k; i++,itb++){
+            return_vec.push_back(itb->second);
+        }
+        return return_vec;
     }
 };
 
 int main(int argc, const char * argv[]) {
     Solution t;
-    ListNode one =  ListNode(1);
-    ListNode two = ListNode(2);
-//    ListNode three = ListNode(3);
-//    ListNode four = ListNode(2);
-//    ListNode five = ListNode(1);
-
-
-//    two.next = NULL;
-//    one.next = &two;
-//    two.next = &three;
-//    three.next = &four;
-//    four.next = &five;
-    ListNode* temp = &one;
-    std::cout<<"\n"<<t.deleteMiddle(temp);
+    std::vector<std::vector<int>> mat = {{1,1,0,0,0},
+                                         {1,1,1,1,0},
+                                         {1,0,0,0,0},
+                                         {1,1,0,0,0},
+                                         {1,1,1,1,1}};
+    std::vector<int> test = t.kWeakestRows(mat,3);
+    std::copy(test.begin(), test.end(), std::ostream_iterator<int>(std::cout, " "));
     return 0;
 }
