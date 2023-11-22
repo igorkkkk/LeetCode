@@ -1,2 +1,2 @@
-# Contains LeetCode problems with c++ solution
+# Contains LeetCode problems with C/C++ Python solutions
  
