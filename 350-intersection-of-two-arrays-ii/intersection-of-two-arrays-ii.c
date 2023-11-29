@@ -7,9 +7,7 @@ int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* return
 
     int map[BUFFER_SIZE] = {0};
 
-    int res_size =  (nums1Size < nums2Size) ? nums1Size : nums2Size;
-    int* res = (int*)malloc(sizeof(int)*res_size);
-
+    int* res = (int*)malloc(sizeof(int)*BUFFER_SIZE);
     for (int i = 0; i < nums1Size; ++i)
         map[nums1[i]]++; // set occurances
     
