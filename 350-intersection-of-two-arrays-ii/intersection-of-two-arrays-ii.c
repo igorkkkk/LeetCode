@@ -11,7 +11,7 @@ int* intersect(int* nums1, int nums1Size, int* nums2, int nums2Size, int* return
     int* res = (int*)malloc(sizeof(int)*res_size);
 
     for (int i = 0; i < nums1Size; ++i)
-        map[nums1[i]]+=1; // set occurances
+        map[nums1[i]]++; // set occurances
     
     for (int i = 0; i < nums2Size; ++i)
         if (map[nums2[i]]){
