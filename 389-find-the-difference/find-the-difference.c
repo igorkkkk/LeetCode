@@ -1,6 +1,4 @@
-int comp(const void *a, const void *b) {
-    return (*(char *)a - *(char *)b);
-}
+int comp(const void *a, const void *b);
 
 char findTheDifference(char* s, char* t) {
     int len_t = strlen(t);
@@ -10,4 +8,8 @@ char findTheDifference(char* s, char* t) {
             if (s[i] != t[i])
                 return t[i];
         return t[len_t-1];
+}
+
+int comp(const void *a, const void *b) {
+    return (*(char *)a - *(char *)b);
 }
