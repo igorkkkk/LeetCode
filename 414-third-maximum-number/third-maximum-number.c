@@ -8,7 +8,7 @@ int thirdMax(int* nums, int numsSize) {
         if(nums[i] != nums[i+1]){
             count++;
             if (count == 2)
-            return nums[i+1];
+                return nums[i+1];
         }
     }
     return nums[0];
