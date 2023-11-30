@@ -3,8 +3,8 @@ int comp (const int *i, const int *j);
 int thirdMax(int* nums, int numsSize) {
     qsort(nums, numsSize, sizeof (int), ( int(*) (const void *, const void *)) comp);
 
-    if (numsSize < 3)
-        return nums[0];
+    // if (numsSize < 3)
+    //     return nums[0];
 
     int count = 0;
     for(int i = 0; i < numsSize-1; i++){
