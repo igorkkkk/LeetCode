@@ -2,9 +2,7 @@ int comp (const int *i, const int *j);
 
 int thirdMax(int* nums, int numsSize) {
     qsort(nums, numsSize, sizeof (int), ( int(*) (const void *, const void *)) comp);
-    for(int i = 0; i < numsSize; i++){
-        printf("%d",nums[i]);
-    }
+
     if (numsSize < 3)
         return nums[0];
 
