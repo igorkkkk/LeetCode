@@ -1,6 +1,4 @@
-
-
-
+#define STACK_SIZE 100
 typedef struct {
     int* arr;
     int top;
@@ -9,7 +7,7 @@ typedef struct {
 
 MyStack* myStackCreate() {
     MyStack* pStack = (MyStack*)malloc(sizeof(MyStack));
-    pStack->arr = (int*)malloc(sizeof(int)*100);
+    pStack->arr = (int*)malloc(sizeof(int)*STACK_SIZE);
     pStack->top = -1;
 
     return pStack;
