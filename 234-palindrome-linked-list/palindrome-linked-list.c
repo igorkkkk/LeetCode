@@ -5,21 +5,6 @@
  *     struct ListNode *next;
  * };
  */
-//   stack = []
-//         medium = head
-//         while head and head.next:
-//             stack.append(medium.val)
-//             medium = medium.next
-//             head = head.next.next
-            
-//         if head:
-//             medium = medium.next
-            
-//         while medium:
-//             if len(stack) and stack.pop()!=medium.val:
-//                 return False
-//             medium = medium.next
-//         return True
 bool isPalindrome(struct ListNode* head) {
     struct ListNode* middle = head;
     int arr[50001];
