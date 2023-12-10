@@ -22,7 +22,7 @@
 //         return True
 bool isPalindrome(struct ListNode* head) {
     struct ListNode* middle = head;
-    int arr[100000];
+    int arr[50001];
     int i = 0;
 
     while (head && head->next) {
