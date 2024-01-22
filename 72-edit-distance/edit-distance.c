@@ -11,9 +11,9 @@ int minDistance(char* word1, char* word2) {
     if (!len1) return len2;
     if (!len2) return len1;
 
-    int** dp = (int**)malloc(sizeof(int*) * (len1 + 1));
+    int** dp = (int**)malloc((len1 + 1) * sizeof(int*));
     for (int i = 0; i <= len1; i++)
-        dp[i] = malloc(sizeof(int) * (len2 + 1));
+        dp[i] = (int*)malloc((len2 + 1) * sizeof(int));
 
     for (int i = 0; i <= len1; i++)
         for (int j = 0; j <= len2; j++)
