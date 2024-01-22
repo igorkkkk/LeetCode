@@ -9,14 +9,12 @@ bool uniqueOccurrences(int* arr, int arrSize) {
     for (int i = 0; i < arrSize; i++)
         hash[arr[i]+SHIFT]++;
 
-    for (int i = 0; i < MAX_SIZE; i++) {
+    for (int i = 0; i < MAX_SIZE; i++)
         if (hash[i] > 0) {
             hash_occur[hash[i]]++;
-            if (hash_occur[hash[i]] > 1) {
+            if (hash_occur[hash[i]] > 1)
                 return false;
-            }
         }
-    }
 
     return true;
 }
