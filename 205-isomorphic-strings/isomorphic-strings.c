@@ -1,6 +1,6 @@
 bool isIsomorphic(char* s, char* t) {
-    char hash_s[128] = {0};
-    char hash_t[128] = {0};
+    int hash_s[128] = {0};
+    int hash_t[128] = {0};
     int i = 1;
     while (*s && *t) {
         if (hash_s[*s] != hash_t[*t])
